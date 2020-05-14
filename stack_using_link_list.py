@@ -7,7 +7,7 @@
 
 class node(object):
 
-    def node(self,data=None,new_next=None):
+    def __init__(self,data=None,new_next=None):
         self.data = data 
         self.next = new_next
 
@@ -29,14 +29,14 @@ class node(object):
         '''
         self.next = new_next 
 
-class linkedlist(object):
+class stack(object):
 
-    def linkedlist(self,head=None):
-        self.head = None
+    def __init__(self,head=None):
+        self.head = head
 
-    def insert(self,key_value):
+    def push(self,key_value):
         '''
-        insert element in link list
+        push element in stack
         '''
         temp = node()
         temp.data = key_value
@@ -47,11 +47,12 @@ class linkedlist(object):
             temp.set_next(self.head)
             self.head = temp
 
-    def delete(self):
+    def pop(self):
         '''
-        delete element from link list 
+        pop element from stack 
         '''
         if self.head == None:
+            print('Empty Stack!!')
             return -1
 
         temp = self.head
@@ -59,27 +60,57 @@ class linkedlist(object):
 
     def print(self):
         '''
-        print link list 
+        print stack 
         '''
         temp = self.head 
 
         while(temp):
-            print(temp.data)
+            print(temp.data,end=' ')
             temp = temp.get_next()
 
+    def isempty(self):
+        '''
+        check for empty stack
+        '''
+        if self.head == None:
+            print(True)
+        else:
+            print(False) 
+
+    def top(self):
+        '''
+        return top element 
+        '''
+        print(self.head.data) 
+
 
 ##########################################################################################
 ##########################################################################################
 
-user_linklist = linkedlist()
+user_stack = stack()
 
-user_linklist.insert(2)
-user_linklist.insert(4)
-user_linklist.insert(6)
+user_stack.push(2)
+user_stack.push(4)
+user_stack.push(6)
+user_stack.push(8)
+user_stack.push(10)
+user_stack.push(12)
+user_stack.push(14)
+user_stack.push(16)
 
-user_linklist.print()
+user_stack.print()
 
-user_linklist.remove()
+user_stack.pop()
 
 print('\n')
-user_linklist.print()
+user_stack.print()
+
+user_stack.pop()
+
+print('\n')
+user_stack.print()
+
+print('\n')
+user_stack.isempty()
+print('\n')
+user_stack.top()
