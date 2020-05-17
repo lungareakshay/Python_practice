@@ -58,6 +58,8 @@ def setClipboard(ls_comment):
     set_reg('Description', description_text)
 
     clipboard.copy(ls_comment)
+    #minimize window
+    window.iconify()
 
 def getInput(fun):
     def inner(*args, **kwargs):
@@ -103,15 +105,6 @@ def blockClicked(ld_date,workitem_number,programmer_name,description_text):
     ls_block_comment += "\n# END Date: "+ str(ld_date) +"   Work Item: WI#"+ workitem_number +"       Programmer: "+ programmer_name 
     setClipboard(ls_block_comment)
 
-def acceptchar():
-    '''
-    set comment char
-    '''
-    user_input = Toplevel()
-    user_input.title('Enter comment character:')
-    user_input.geometry('300x30')
-    user_input.mainloop()
-
 def displayinfo():
     '''
     display information for utility
@@ -123,11 +116,12 @@ window = Tk()
 
 # set title
 window.title('Comment Utility')
-window.geometry('250x210')
+window.geometry('250x230')
+window.iconbitmap('./hash.ico')
+window.maxsize(250,230) 
 
 # create menu to set the comment character
 menu = Menu(window)
-menu.add_command(label='Settings',command =acceptchar)
 menu.add_command(label='Info',command =displayinfo)
 window.config(menu=menu)
 
@@ -159,7 +153,6 @@ description.grid(column=0, row=5, sticky ='we')
 # Button to generate comment
 btn_header = Button(window, text="Header",command=headerClicked, font = ("Arial Bold",10))
 btn_header.grid(column=0, row=6,sticky ='we')
-
 
 btn_header = Button(window, text="Single Line",command=singleClicked, font = ("Arial Bold",10))
 btn_header.grid(column=0, row=7, sticky ='we')
