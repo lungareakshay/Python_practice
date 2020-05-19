@@ -7,6 +7,8 @@ This utility to add comment has been created using tkinter.
 - Only once user need to add Programmer Name, Work Item Number and Description for defect, then utility will store this value into windows registry and use it for comment, hence this will reduce time for commenting.
 - Once user click on any button utility will go in minimize view hence reduce clicks for user.
 
+[EXE Path]:(https://github.com/lungareakshay/Python_practice/blob/master/comment_utility/dist/comment_main.exe)
+
 There are three types of comment this utility provide:
 
 # Header Comment
