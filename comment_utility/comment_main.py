@@ -4,8 +4,6 @@ from tkinter import *
 from tkinter import messagebox  
 from datetime import date
 import winreg
-import clipboard
-
 ##########################################################################################
 
 
@@ -57,7 +55,10 @@ def setClipboard(ls_comment):
     set_reg('WorkItem', workitem_number)
     set_reg('Description', description_text)
 
-    clipboard.copy(ls_comment)
+    # window.copy(ls_comment)
+    window.clipboard_clear()
+    window.clipboard_append(ls_comment)
+    window.update() # now it stays on the clipboard after the window is closed
     #minimize window
     window.iconify()
 
@@ -117,7 +118,6 @@ window = Tk()
 # set title
 window.title('Comment Utility')
 window.geometry('250x230')
-window.iconbitmap('./hash.ico')
 window.maxsize(250,230) 
 
 # create menu to set the comment character
